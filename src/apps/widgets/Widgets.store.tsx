@@ -10,6 +10,7 @@ interface LessonProps {
 interface LessonActions {
   addWidget: (widget: WidgetType) => void;
   removeWidget: (id: string) => void;
+  updateWidget: (widget: WidgetType) => void;
   reset: () => void;
 }
 
@@ -22,7 +23,7 @@ const initialLessonState: LessonProps = {
 
 export const useLessonState = create<LessonState>()(
   persist(
-    (set) => ({
+    (set, get) => ({
       ...initialLessonState,
 
       addWidget: (widget: WidgetType) =>
@@ -35,6 +36,20 @@ export const useLessonState = create<LessonState>()(
         set((state: LessonState) => ({
           ...state,
           widgets: state.widgets.filter((widget) => widget.id !== id),
+        }));
+      },
+
+      updateWidget: (widget: WidgetType) => {
+        const widgets = get().widgets.map((w) => {
+          if (w.id === widget.id) {
+            return widget;
+          }
+          return w;
+        });
+
+        set((state: LessonState) => ({
+          ...state,
+          widgets,
         }));
       },
 
