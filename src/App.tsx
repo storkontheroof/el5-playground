@@ -1,34 +1,26 @@
-import "./App.css";
-import { CounterControl, DisplayCounter } from "./Counter";
-import { AvailableWidgets, SelectedWidgets } from "./Widgets";
+import React, { Suspense } from "react";
+import { Routes, Route } from "react-router-dom";
 
-const FieldSet = ({ children, legend }) => {
-  return (
-    <fieldset>
-      <legend>{legend}</legend>
-      {children}
-    </fieldset>
-  );
-};
+const CounterApp = React.lazy(() => import("./apps/counter/App"));
+const WidgetsApp = React.lazy(() => import("./apps/widgets/App"));
+
+import { LoadingSpinner } from "./ui/LoadingSpinner";
+import { Navbar } from "./components/Navbar";
 
 function App() {
   return (
-    <div>
-      <FieldSet legend="Counter">
-        <CounterControl />
-        <DisplayCounter />
-      </FieldSet>
-
-      <FieldSet legend="Widgets">
-        <div style={{ display: "flex", gap: "24px" }}>
-          <div>
-            <AvailableWidgets />
-          </div>
-          <div>
-            <SelectedWidgets />
-          </div>
-        </div>
-      </FieldSet>
+    <div className="app">
+      <header>
+        <Navbar />
+      </header>
+      <main>
+        <Suspense fallback={<LoadingSpinner />}>
+          <Routes>
+            <Route path="counter" element={<CounterApp />} />
+            <Route path="widgets" element={<WidgetsApp />} />
+          </Routes>
+        </Suspense>
+      </main>
     </div>
   );
 }
