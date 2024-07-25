@@ -1,5 +1,6 @@
 import { FieldSet } from "../../ui/Fieldset";
-import { AvailableWidgets, SelectedWidgets } from "./Widgets";
+import { SelectedWidgets } from "./components/SelectedWidgets";
+import { AvailableWidgets } from "./components/AvailableWidgets";
 
 function App() {
   return (
