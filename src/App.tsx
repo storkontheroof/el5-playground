@@ -1,8 +1,8 @@
-import React, { Suspense } from "react";
+import { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 
-const CounterApp = React.lazy(() => import("./apps/counter/App"));
-const WidgetsApp = React.lazy(() => import("./apps/widgets/App"));
+const CounterApp = lazy(() => import("./apps/counter/App"));
+const WidgetsApp = lazy(() => import("./apps/widgets/App"));
 
 import { LoadingSpinner } from "./ui/LoadingSpinner";
 import { Navbar } from "./components/Navbar";

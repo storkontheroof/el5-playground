@@ -2,7 +2,7 @@ import { WidgetFooter } from "./WidgetFooter";
 import { WidgetHeader } from "./WidgetHeader";
 import { MultipleChoiceWidgetInterface } from "../Widgets.types";
 
-export const MultipleChoiceWidget = (props: MultipleChoiceWidgetInterface) => {
+function MultipleChoiceWidget(props: MultipleChoiceWidgetInterface) {
   return (
     <div>
       <WidgetHeader id={props.id} title={props.title} />
@@ -11,4 +11,6 @@ export const MultipleChoiceWidget = (props: MultipleChoiceWidgetInterface) => {
       <WidgetFooter id={props.id} />
     </div>
   );
-};
+}
+
+export default MultipleChoiceWidget;

@@ -1,7 +1,14 @@
-import { ChoiceWidget } from "./components/ChoiceWidget";
-import { MultipleChoiceWidget } from "./components/MultipleChoiceWidget";
-import { OpenQuestionWidget } from "./components/OpenQuestionWidget";
+/* eslint-disable react-refresh/only-export-components */
+import { lazy } from "react";
 import { AvailableWidgetType } from "./Widgets.types";
+
+const ChoiceWidget = lazy(() => import("./components/ChoiceWidget"));
+const MultipleChoiceWidget = lazy(
+  () => import("./components/MultipleChoiceWidget")
+);
+const OpenQuestionWidget = lazy(
+  () => import("./components/OpenQuestionWidget")
+);
 
 export const availableWidgets: AvailableWidgetType[] = [
   {

@@ -2,7 +2,7 @@ import { WidgetFooter } from "./WidgetFooter";
 import { WidgetHeader } from "./WidgetHeader";
 import { OpenQuestionWidgetInterface } from "../Widgets.types";
 
-export const OpenQuestionWidget = (props: OpenQuestionWidgetInterface) => {
+function OpenQuestionWidget(props: OpenQuestionWidgetInterface) {
   return (
     <div>
       <WidgetHeader id={props.id} title={props.title} />
@@ -19,4 +19,6 @@ export const OpenQuestionWidget = (props: OpenQuestionWidgetInterface) => {
       <WidgetFooter id={props.id} />
     </div>
   );
-};
+}
+
+export default OpenQuestionWidget;

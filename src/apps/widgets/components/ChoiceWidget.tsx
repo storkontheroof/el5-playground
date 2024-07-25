@@ -2,7 +2,7 @@ import { WidgetFooter } from "./WidgetFooter";
 import { WidgetHeader } from "./WidgetHeader";
 import { ChoiceWidgetInterface } from "../Widgets.types";
 
-export const ChoiceWidget = (props: ChoiceWidgetInterface) => {
+function ChoiceWidget(props: ChoiceWidgetInterface) {
   return (
     <div>
       <WidgetHeader id={props.id} title={props.title} />
@@ -11,4 +11,6 @@ export const ChoiceWidget = (props: ChoiceWidgetInterface) => {
       <WidgetFooter id={props.id} />
     </div>
   );
-};
+}
+
+export default ChoiceWidget;
