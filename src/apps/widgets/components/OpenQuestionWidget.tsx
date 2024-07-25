@@ -1,6 +1,7 @@
 import { memo } from "react";
+import isEqual from "react-fast-compare";
 
-import { deepEqual } from "../../../utils/deepEqual";
+// import { deepEqual } from "../../../utils/deepEqual";
 import { useLessonState } from "../Widgets.store";
 import { OpenQuestionWidgetInterface } from "../Widgets.types";
 
@@ -9,6 +10,8 @@ import { WidgetHeader } from "./WidgetHeader";
 
 // eslint-disable-next-line react-refresh/only-export-components
 function OpenQuestionWidget(widget: OpenQuestionWidgetInterface) {
+  console.log(">>> rendering OpenQuestionWidget for widget.id", widget.id);
+
   const updateWidget = useLessonState((state) => state.updateWidget);
 
   const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -59,4 +62,7 @@ function OpenQuestionWidget(widget: OpenQuestionWidgetInterface) {
 }
 
 // eslint-disable-next-line react-refresh/only-export-components
-export default memo(OpenQuestionWidget, deepEqual<OpenQuestionWidgetInterface>);
+export default memo(
+  OpenQuestionWidget,
+  isEqual<OpenQuestionWidgetInterface, OpenQuestionWidgetInterface>
+);

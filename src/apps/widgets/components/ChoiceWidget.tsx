@@ -1,6 +1,7 @@
 import { memo } from "react";
+import isEqual from "react-fast-compare";
 
-import { deepEqual } from "../../../utils/deepEqual";
+// import { deepEqual } from "../../../utils/deepEqual";
 import { ChoiceWidgetInterface } from "../Widgets.types";
 
 import { WidgetFooter } from "./WidgetFooter";
@@ -8,6 +9,8 @@ import { WidgetHeader } from "./WidgetHeader";
 
 // eslint-disable-next-line react-refresh/only-export-components
 function ChoiceWidget(widget: ChoiceWidgetInterface) {
+  console.log(">>> rendering ChoiceWidget for widget.id", widget.id);
+
   return (
     <div>
       <WidgetHeader id={widget.id} title={widget.title} />
@@ -19,4 +22,7 @@ function ChoiceWidget(widget: ChoiceWidgetInterface) {
 }
 
 // eslint-disable-next-line react-refresh/only-export-components
-export default memo(ChoiceWidget, deepEqual<ChoiceWidgetInterface>);
+export default memo(
+  ChoiceWidget,
+  isEqual<ChoiceWidgetInterface, ChoiceWidgetInterface>
+);
