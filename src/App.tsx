@@ -1,13 +1,36 @@
-import './App.css'
+import "./App.css";
+import { CounterControl, DisplayCounter } from "./Counter";
+import { AvailableWidgets, SelectedWidgets } from "./Widgets";
+
+const FieldSet = ({ children, legend }) => {
+  return (
+    <fieldset>
+      <legend>{legend}</legend>
+      {children}
+    </fieldset>
+  );
+};
 
 function App() {
-
   return (
-      <div className="form-row">
-        <svg className="icon" fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="8"/><line x1="21" x2="16.65" y1="21" y2="16.65"/></svg>
-        <input className="text-input" type="text" placeholder="Username" />
-      </div>
-  )
+    <div>
+      <FieldSet legend="Counter">
+        <CounterControl />
+        <DisplayCounter />
+      </FieldSet>
+
+      <FieldSet legend="Widgets">
+        <div style={{ display: "flex", gap: "24px" }}>
+          <div>
+            <AvailableWidgets />
+          </div>
+          <div>
+            <SelectedWidgets />
+          </div>
+        </div>
+      </FieldSet>
+    </div>
+  );
 }
 
-export default App
+export default App;
